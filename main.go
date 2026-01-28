@@ -117,10 +117,27 @@ func header() {
 func main() {
 	header()
 
-	color.HiBlack("Scanning current directory...\n")
-	fmt.Println(".")
+	// Get target directory from command-line argument or use current directory
+	targetDir := "."
+	if len(os.Args) > 1 {
+		targetDir = os.Args[1]
+	}
 
-	tree(".", "")
+	// Validate directory exists
+	info, err := os.Stat(targetDir)
+	if err != nil {
+		color.Red("❌ Error: %v", err)
+		os.Exit(1)
+	}
+	if !info.IsDir() {
+		color.Red("❌ Error: %s is not a directory", targetDir)
+		os.Exit(1)
+	}
+
+	color.HiBlack("Scanning directory: %s\n", targetDir)
+	fmt.Println(targetDir)
+
+	tree(targetDir, "")
 
 	color.HiBlack("\n────────────────────────────────────────")
 	color.Cyan("Summary")

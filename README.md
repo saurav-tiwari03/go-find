@@ -15,24 +15,49 @@ A command-line utility written in Go that displays directory structures in a tre
 
 ## Installation
 
+### Quick Install (Recommended)
+
+```bash
+curl -sL https://go-find.sauravdev.in | bash
+```
+
+### Manual Installation
+
 ```bash
 git clone https://github.com/saurav-tiwari03/go-find.git
 cd go-find
 go build -o go-find
+./go-find
+```
+
+### From Source
+
+```bash
+git clone https://github.com/saurav-tiwari03/go-find.git
+cd go-find
+go install
 ```
 
 ## Usage
 
+After installation, simply run:
+
 ```bash
-go run main.go [directory]
+go-find
+```
+
+Or to scan a specific directory:
+
+```bash
+go-find /path/to/directory
 ```
 
 **Example:**
 ```bash
-go run main.go .
+go-find .
 ```
 
-This will display the directory structure of the current directory with file sizes.
+This will display the directory structure with file sizes.
 
 ## Dependencies
 
