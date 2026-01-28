@@ -125,6 +125,7 @@ const landingPage = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="favicon" href="/favicon.ico">
     <title>go-find | Fast File Explorer</title>
     <meta name="description" content="Fast, minimal file explorer written in Go. View directory trees with file sizes, colorized output, and instant results.">
     
@@ -148,7 +149,6 @@ const landingPage = `<!DOCTYPE html>
     <meta name="keywords" content="go, golang, file explorer, tree, cli, terminal, command line">
     <meta name="theme-color" content="#00ADD8">
     
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
