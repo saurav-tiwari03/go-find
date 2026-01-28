@@ -301,6 +301,39 @@ const landingPage = `<!DOCTYPE html>
             letter-spacing: 1px;
         }
 
+        .usage-section {
+            margin-top: 40px;
+        }
+
+        .usage-grid {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .usage-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 200px;
+        }
+
+        .usage-item code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #00ADD8;
+        }
+
+        .usage-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.2rem;
@@ -371,6 +404,20 @@ const landingPage = `<!DOCTYPE html>
         </div>
 
         <p class="note">works on macOS, Linux & Windows (WSL)</p>
+
+        <div class="usage-section">
+            <div class="divider">after installation</div>
+            <div class="usage-grid">
+                <div class="usage-item">
+                    <code>go-find</code>
+                    <span class="usage-desc">scan current directory</span>
+                </div>
+                <div class="usage-item">
+                    <code>go-find ~/projects</code>
+                    <span class="usage-desc">scan specific directory</span>
+                </div>
+            </div>
+        </div>
 
         <div class="footer">
             <a href="https://github.com/saurav-tiwari03/go-find" target="_blank">github</a>
