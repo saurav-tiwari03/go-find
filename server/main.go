@@ -126,6 +126,28 @@ const landingPage = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>go-find | Fast File Explorer</title>
+    <meta name="description" content="Fast, minimal file explorer written in Go. View directory trees with file sizes, colorized output, and instant results.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://go-find.sauravdev.in/">
+    <meta property="og:title" content="go-find | Fast File Explorer">
+    <meta property="og:description" content="Fast, minimal file explorer written in Go. View directory trees with file sizes, colorized output, and instant results. Install with: curl -skL go-find.sauravdev.in | bash">
+    <meta property="og:image" content="https://go-find.sauravdev.in/og-image.svg">
+    <meta property="og:site_name" content="go-find">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://go-find.sauravdev.in/">
+    <meta name="twitter:title" content="go-find | Fast File Explorer">
+    <meta name="twitter:description" content="Fast, minimal file explorer written in Go. View directory trees with file sizes, colorized output, and instant results.">
+    <meta name="twitter:image" content="https://go-find.sauravdev.in/og-image.svg">
+    
+    <!-- Additional meta -->
+    <meta name="author" content="saurav-tiwari03">
+    <meta name="keywords" content="go, golang, file explorer, tree, cli, terminal, command line">
+    <meta name="theme-color" content="#00ADD8">
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -453,6 +475,47 @@ const faviconSVG = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg
   <path d="M44 58 Q50 68 56 58" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
 </svg>`
 
+// Open Graph image for social sharing (1200x630 recommended)
+const ogImageSVG = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0d0d"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ADD8"/>
+      <stop offset="50%" style="stop-color:#5DC9E2"/>
+      <stop offset="100%" style="stop-color:#00ADD8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Logo circle -->
+  <circle cx="600" cy="200" r="70" fill="#00ADD8" fill-opacity="0.1" stroke="#00ADD8" stroke-width="3"/>
+  <path d="M550 200C550 172.386 572.386 150 600 150" stroke="#00ADD8" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M600 150C627.614 150 650 172.386 650 200C650 227.614 627.614 250 600 250" stroke="#5DC9E2" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <circle cx="600" cy="200" r="12" fill="#00ADD8"/>
+  
+  <!-- Title -->
+  <text x="600" y="340" font-family="monospace" font-size="72" font-weight="bold" fill="url(#textGrad)" text-anchor="middle">go-find</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="400" font-family="sans-serif" font-size="28" fill="#888888" text-anchor="middle">fast, minimal file explorer written in Go</text>
+  
+  <!-- Command box -->
+  <rect x="300" y="450" width="600" height="60" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="600" y="490" font-family="monospace" font-size="22" fill="#e0e0e0" text-anchor="middle">curl -skL go-find.sauravdev.in | bash</text>
+  
+  <!-- Features -->
+  <text x="350" y="570" font-family="sans-serif" font-size="18" fill="#666666" text-anchor="middle">📁 Tree View</text>
+  <text x="500" y="570" font-family="sans-serif" font-size="18" fill="#666666" text-anchor="middle">📊 File Sizes</text>
+  <text x="650" y="570" font-family="sans-serif" font-size="18" fill="#666666" text-anchor="middle">🎨 Colorized</text>
+  <text x="800" y="570" font-family="sans-serif" font-size="18" fill="#666666" text-anchor="middle">⚡ Instant</text>
+</svg>`
+
 // Go favicon as ICO (base64 encoded simple 16x16 icon)
 // This is a simple blue circle representing Go
 var faviconICO []byte
@@ -510,6 +573,19 @@ func main() {
 		w.Header().Set("Content-Type", "image/svg+xml")
 		w.Header().Set("Cache-Control", "public, max-age=86400")
 		fmt.Fprint(w, faviconSVG)
+	})
+
+	// Serve Open Graph image for social sharing
+	http.HandleFunc("/og-image.png", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "image/svg+xml")
+		w.Header().Set("Cache-Control", "public, max-age=86400")
+		fmt.Fprint(w, ogImageSVG)
+	})
+
+	http.HandleFunc("/og-image.svg", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "image/svg+xml")
+		w.Header().Set("Cache-Control", "public, max-age=86400")
+		fmt.Fprint(w, ogImageSVG)
 	})
 
 	// Serve landing page or install script at root based on client
