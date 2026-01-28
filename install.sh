@@ -58,4 +58,5 @@ fi
 
 echo "─────────────────────────────────"
 echo -e "${GREEN}✅ Installation complete!${NC}"
-echo "Run: $BINARY_NAME"
+echo -e "${GREEN}Run 'go-find' to get started${NC}"
+

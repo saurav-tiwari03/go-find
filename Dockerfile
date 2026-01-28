@@ -35,6 +35,9 @@ RUN addgroup -g 1000 appuser && \
 
 USER appuser
 
-# Set the entrypoint
-ENTRYPOINT ["./go-find"]
-CMD ["."]
+# Make binary available in PATH
+ENV PATH="/app:${PATH}"
+
+# Binary is available but not executed by default
+CMD ["/bin/sh"]
+
