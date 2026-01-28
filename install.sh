@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # go-find - Fast, minimal file explorer written in Go
-# Usage: curl -sL https://go-find.sauravdev.in | bash [directory]
+# Usage: curl -sL https://go-find.sauravdev.in | bash
+# Usage: curl -sL https://go-find.sauravdev.in | bash -s -- /path/to/directory
 
 set -e
 
@@ -46,5 +47,6 @@ echo -e "${YELLOW}▶️  Running...${NC}\n"
 ./go-find "$TARGET_DIR"
 
 echo -e "\n${GREEN}✅ Done!${NC}"
+
 
 

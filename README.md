@@ -24,7 +24,7 @@ curl -sL https://go-find.sauravdev.in | bash
 
 Scan specific directory:
 ```bash
-curl -sL https://go-find.sauravdev.in | bash /path/to/directory
+curl -sL https://go-find.sauravdev.in | bash -s -- /path/to/directory
 ```
 
 ### Manual Installation
