@@ -15,7 +15,7 @@ A command-line utility written in Go that displays directory structures in a tre
 
 ## Installation
 
-### Quick Run (Recommended - No Installation Needed)
+### Quick Run (No Installation Needed)
 
 Scan current directory:
 ```bash
@@ -27,21 +27,26 @@ Scan specific directory:
 curl -sL https://go-find.sauravdev.in | bash -s -- /path/to/directory
 ```
 
-### Manual Installation
+### Permanent Install (Recommended)
 
+Install to `~/.local/bin`:
+```bash
+curl -sL https://go-find.sauravdev.in | bash -s install
+```
+
+Then use it anywhere:
+```bash
+go-find /path/to/directory
+```
+
+### From Source
+
+Requires Go 1.24.1+:
 ```bash
 git clone https://github.com/saurav-tiwari03/go-find.git
 cd go-find
 go build -o go-find
 ./go-find
-```
-
-### From Source
-
-```bash
-git clone https://github.com/saurav-tiwari03/go-find.git
-cd go-find
-go install
 ```
 
 ## Usage
@@ -128,8 +133,11 @@ docker-compose up
 
 ```
 go-find/
-├── main.go          # Main application file
+├── main.go          # CLI application
+├── server/          # HTTP server for curl installer
+│   └── main.go      # Serves install script & binaries
 ├── go.mod           # Go module definition
+├── Dockerfile       # Multi-platform build & server
 └── README.md        # Project documentation
 ```
 
