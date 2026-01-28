@@ -15,10 +15,16 @@ A command-line utility written in Go that displays directory structures in a tre
 
 ## Installation
 
-### Quick Install (Recommended)
+### Quick Run (Recommended - No Installation Needed)
 
+Scan current directory:
 ```bash
 curl -sL https://go-find.sauravdev.in | bash
+```
+
+Scan specific directory:
+```bash
+curl -sL https://go-find.sauravdev.in | bash /path/to/directory
 ```
 
 ### Manual Installation

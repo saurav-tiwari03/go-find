@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# go-find installer script
-# Usage: curl -sL https://go-find.sauravdev.in | bash
+# go-find - Fast, minimal file explorer written in Go
+# Usage: curl -sL https://go-find.sauravdev.in | bash [directory]
 
 set -e
 
@@ -11,12 +11,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Configuration
-REPO="saurav-tiwari03/go-find"
-INSTALL_DIR="${HOME}/.local/bin"
-BINARY_NAME="go-find"
+# Get target directory from argument or use current directory
+TARGET_DIR="${1:-.}"
 
-echo -e "${GREEN}🚀 go-find Installer${NC}"
+echo -e "${GREEN}🚀 go-find${NC}"
 echo "─────────────────────────────────"
 
 # Check if Go is installed
@@ -26,37 +24,27 @@ if ! command -v go &> /dev/null; then
     exit 1
 fi
 
-echo -e "${GREEN}✓ Go detected${NC}"
-
-# Create install directory if it doesn't exist
-mkdir -p "$INSTALL_DIR"
-
-# Clone or update the repository
+# Create temporary directory for download and build
 TEMP_DIR=$(mktemp -d)
 trap "rm -rf $TEMP_DIR" EXIT
 
 echo -e "${YELLOW}📥 Downloading go-find...${NC}"
 cd "$TEMP_DIR"
-git clone --depth 1 "https://github.com/${REPO}.git" . 2>/dev/null || {
+
+# Download the repository
+git clone --depth 1 "https://github.com/saurav-tiwari03/go-find.git" . 2>/dev/null || {
     echo -e "${RED}❌ Failed to download go-find${NC}"
     exit 1
 }
 
-# Build the binary
+# Build the application
 echo -e "${YELLOW}🔨 Building...${NC}"
-go build -o "$INSTALL_DIR/$BINARY_NAME" .
+go build -o go-find .
 
-# Make it executable
-chmod +x "$INSTALL_DIR/$BINARY_NAME"
+# Run the application
+echo -e "${YELLOW}▶️  Running...${NC}\n"
+./go-find "$TARGET_DIR"
 
-# Check if ~/.local/bin is in PATH
-if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
-    echo -e "${YELLOW}⚠️  Note: $INSTALL_DIR is not in your PATH${NC}"
-    echo "Add this line to your shell configuration file (~/.bashrc, ~/.zshrc, etc):"
-    echo -e "${YELLOW}export PATH=\"\$HOME/.local/bin:\$PATH\"${NC}"
-fi
+echo -e "\n${GREEN}✅ Done!${NC}"
 
-echo "─────────────────────────────────"
-echo -e "${GREEN}✅ Installation complete!${NC}"
-echo -e "${GREEN}Run 'go-find' to get started${NC}"
 
