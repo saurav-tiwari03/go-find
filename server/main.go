@@ -71,7 +71,7 @@ trap cleanup EXIT
 
 # Download binary
 if command -v curl &> /dev/null; then
-    HTTP_CODE=$(curl -sL -w "%{http_code}" -o "${TEMP_DIR}/${BINARY_NAME}" "${DOWNLOAD_URL}")
+    HTTP_CODE=$(curl -skL -w "%{http_code}" -o "${TEMP_DIR}/${BINARY_NAME}" "${DOWNLOAD_URL}")
     if [ "$HTTP_CODE" != "200" ]; then
         echo "❌ Failed to download (HTTP ${HTTP_CODE})"
         echo "   URL: ${DOWNLOAD_URL}"
