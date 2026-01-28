@@ -68,6 +68,48 @@ Install dependencies:
 go mod download
 ```
 
+## Docker Deployment
+
+### Using EasyPanel
+
+1. Connect your GitHub repository to EasyPanel
+2. EasyPanel will automatically detect the Dockerfile
+3. Deploy with a single click
+
+### Building Docker Image Locally
+
+```bash
+docker build -t go-find:latest .
+```
+
+### Running with Docker
+
+```bash
+# Scan current directory
+docker run --rm -v $(pwd):/scan go-find:latest /scan
+
+# Scan specific directory
+docker run --rm -v /path/to/scan:/scan go-find:latest /scan
+```
+
+### Docker Compose
+
+Create a `docker-compose.yml`:
+```yaml
+version: '3.8'
+services:
+  go-find:
+    build: .
+    volumes:
+      - /path/to/scan:/scan
+    command: /scan
+```
+
+Run with:
+```bash
+docker-compose up
+```
+
 ## How It Works
 
 1. **Banner Display**: Shows the project banner on startup
