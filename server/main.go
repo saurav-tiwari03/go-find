@@ -422,7 +422,7 @@ const landingPage = `<!DOCTYPE html>
         <div class="footer">
             <a href="https://github.com/saurav-tiwari03/go-find" target="_blank">github</a>
             <span class="footer-divider">·</span>
-            <a href="https://sauravdev.in" target="_blank">sauravdev.in</a>
+            <a href="https://sauravdev.in?utm_source=go-find" target="_blank">sauravdev.in</a>
         </div>
     </div>
 
