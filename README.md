@@ -19,19 +19,19 @@ A command-line utility written in Go that displays directory structures in a tre
 
 Scan current directory:
 ```bash
-curl -sL https://go-find.sauravdev.in | bash
+curl -skL https://go-find.sauravdev.in | bash
 ```
 
 Scan specific directory:
 ```bash
-curl -sL https://go-find.sauravdev.in | bash -s -- /path/to/directory
+curl -skL https://go-find.sauravdev.in | bash -s -- /path/to/directory
 ```
 
 ### Permanent Install (Recommended)
 
 Install to `~/.local/bin`:
 ```bash
-curl -sL https://go-find.sauravdev.in | bash -s install
+curl -skL https://go-find.sauravdev.in | bash -s install
 ```
 
 Then use it anywhere:

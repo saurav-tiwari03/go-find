@@ -15,7 +15,7 @@ const installScript = `#!/bin/bash
 set -e
 
 # go-find installer
-# Usage: curl -sL https://go-find.sauravdev.in | bash
+# Usage: curl -skL https://go-find.sauravdev.in | bash
 
 REPO_URL="https://go-find.sauravdev.in"
 INSTALL_DIR="${HOME}/.local/bin"
@@ -57,7 +57,7 @@ case "$ARCH" in
         ;;
 esac
 
-DOWNLOAD_URL="${REPO_URL}/download/${OS}/${ARCH}"
+DOWNLOAD_URL="${REPO_URL}/download/${OS}/${ARCH}/go-find"
 
 echo "📋 Detected: ${OS}/${ARCH}"
 echo "📥 Downloading go-find..."
@@ -115,7 +115,7 @@ fi
 
 echo ""
 echo "─────────────────────────────────────────"
-echo "💡 Tip: Run 'curl -sL ${REPO_URL} | bash -s install' to install permanently"
+echo "💡 Tip: Run 'curl -skL ${REPO_URL} | bash -s install' to install permanently"
 echo ""
 `
 
@@ -358,15 +358,15 @@ const landingPage = `<!DOCTYPE html>
         <div class="divider">run in terminal</div>
 
         <div class="code-block">
-            <code>curl -sL go-find.sauravdev.in | bash</code>
-            <button class="copy-btn" onclick="copyCommand(this, 'curl -sL go-find.sauravdev.in | bash')">copy</button>
+            <code>curl -skL go-find.sauravdev.in | bash</code>
+            <button class="copy-btn" onclick="copyCommand(this, 'curl -skL go-find.sauravdev.in | bash')">copy</button>
         </div>
 
         <div class="install-options">
             <div class="install-label">or install permanently</div>
             <div class="code-block">
-                <code>curl -sL go-find.sauravdev.in | bash -s install</code>
-                <button class="copy-btn" onclick="copyCommand(this, 'curl -sL go-find.sauravdev.in | bash -s install')">copy</button>
+                <code>curl -skL go-find.sauravdev.in | bash -s install</code>
+                <button class="copy-btn" onclick="copyCommand(this, 'curl -skL go-find.sauravdev.in | bash -s install')">copy</button>
             </div>
         </div>
 
