@@ -2,7 +2,6 @@
 <img width="1080" height="480" alt="image" src="https://github.com/user-attachments/assets/06d062ec-2647-44a1-a6ca-b4ae9f1a0dc9" />
 
 A command-line utility written in Go that displays directory structures in a tree format with file sizes and colorized output.
-
 ## Features
 
 - 📁 **Tree View Display**: Shows directory structure in a hierarchical tree format
